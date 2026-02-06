@@ -1,0 +1,34 @@
+REPORT Z_EMPLOYEE_ALV_REPORT.
+
+TABLES: ZEMPLOYEE_MASTER.
+
+DATA: lt_employee TYPE TABLE OF ZEMPLOYEE_MASTER,
+      lo_alv TYPE REF TO cl_salv_table.
+
+PARAMETERS: p_dept TYPE ZEMPLOYEE_MASTER-DEPARTMENT.
+
+START-OF-SELECTION.
+
+SELECT *
+  FROM ZEMPLOYEE_MASTER
+  INTO TABLE lt_employee
+  WHERE department = p_dept.
+
+IF lt_employee IS INITIAL.
+  WRITE: 'No records found'.
+ELSE.
+
+  TRY.
+      cl_salv_table=>factory(
+        IMPORTING
+          r_salv_table = lo_alv
+        CHANGING
+          t_table      = lt_employee ).
+
+      lo_alv->display( ).
+
+    CATCH cx_salv_msg.
+      WRITE 'ALV Display Error'.
+  ENDTRY.
+
+ENDIF.
