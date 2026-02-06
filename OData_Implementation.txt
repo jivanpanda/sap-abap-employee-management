@@ -1,0 +1,31 @@
+OData Service Name: ZEMPLOYEE_ODATA
+
+Steps:
+
+1. Open transaction SEGW.
+2. Create new project ZEMPLOYEE_ODATA.
+3. Create entity type:
+   - Employee
+   - Import structure from ZEMPLOYEE_MASTER.
+
+4. Generate runtime objects.
+
+5. Go to Data Provider Class (DPC_EXT).
+
+6. Redefine method:
+
+EMPLOYEESET_GET_ENTITYSET
+
+Example Logic:
+
+SELECT *
+  FROM ZEMPLOYEE_MASTER
+  INTO TABLE et_entityset.
+
+7. Activate service.
+
+8. Register service using:
+
+Transaction: /IWFND/MAINT_SERVICE
+
+9. Test using Gateway Client or browser.
