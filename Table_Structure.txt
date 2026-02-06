@@ -1,0 +1,19 @@
+Custom Table Name: ZEMPLOYEE_MASTER
+
+Field List:
+
+1. EMP_ID        (CHAR10)   - Key field
+2. NAME          (CHAR40)
+3. DEPARTMENT    (CHAR20)
+4. DESIGNATION   (CHAR30)
+5. SALARY        (DEC15,2)
+6. JOIN_DATE     (DATS)
+
+Steps to Create:
+
+1. Go to transaction SE11.
+2. Create new table ZEMPLOYEE_MASTER.
+3. Add above fields.
+4. Set EMP_ID as primary key.
+5. Define data elements/domains if required.
+6. Activate table.
